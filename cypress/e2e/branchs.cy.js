@@ -9,6 +9,8 @@ describe('Realizando testes na plataforma', () => {
         AcessarPlataforma('alexandre.pereira', 102030)
         pessoas()
         usuario()
+
+        ConfirmarDados('alexteste', 123, 321)
     });
 
 });
@@ -28,5 +30,14 @@ function pessoas(){
 
 function usuario(){
     cy.get('#table_users_filter > label > .form-control').type('alexandre pereira teste')
-    cy.contains('.odd > :nth-child(7)', 'Alterar Usuários').click()
+    cy.get('[href="/usuario/update/2042"]').click()
+    cy.get('[href="/usuario/update/2042"]').should('be.visible')
+
+}
+function ConfirmarDados(user, pass1, pass2){
+    cy.get('#id_login').type(user)
+    cy.get('#id_password1').type(pass1)
+    cy.get('#id_password2').type(pass2)
+    cy.contains('.modal-footer > .btn-success', 'Salvar').click()
+
 }
