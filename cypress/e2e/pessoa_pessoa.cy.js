@@ -23,12 +23,6 @@ describe('', () => {
 
 
 
-
-
-
-
-
-
 //Acessar a plataforma
 function AcessarPlataforma(usuario,senha){
     cy.get('#id_login').type(usuario)
@@ -56,6 +50,10 @@ function CadastroPessoa(nome,cpf,bairro){
 //Enviar mensagem de teste
 function EnviarSms(){
     cy.get('[href="/pessoa/send-push-message/"]').click()
+    cy.get('#id_titulo').click().type('Notificação de teste')
+    cy.get('#id_mensagem').click().type('Teste de notificação')
+    cy.get('#table_users_client_filter > label > .form-control').click().type('teste alexandre auto')
+
 }
 
 //Chamar o botão de salvar
