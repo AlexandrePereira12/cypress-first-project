@@ -11,10 +11,23 @@ describe('', () => {
         salvar()
     });
     
-    it.only('Envia mensagem de teste', () => {
+    it('Envia mensagem de teste', () => {
         AcessarPlataforma('alexandre.pereira', 102030)
         pessoaPessoa()
         EnviarSms()
+    });
+
+
+    it.only('Acessar pessoas INATIVAS/ATIVAS - emitir arquivo', () => {
+        AcessarPlataforma('alexandre.pereira', 102030)
+        pessoaPessoa()
+        FiltroStatus()
+
+
+    });
+
+    it('Acessar a ficha do cliente - Veiculos', () => {
+        
     });
 });
 
@@ -53,7 +66,15 @@ function EnviarSms(){
     cy.get('#id_titulo').click().type('Notificação de teste')
     cy.get('#id_mensagem').click().type('Teste de notificação')
     cy.get('#table_users_client_filter > label > .form-control').click().type('teste alexandre auto')
+    cy.contains('.mt-checkbox > span').click()
+    
+}
 
+function FiltroStatus(){
+    cy.get(':nth-child(4) > .btn').click()
+    cy.get('#inativa').click()
+    cy.get(':nth-child(5) > .btn').click()
+    cy.get(':nth-child(3) > .tool-action').click()
 }
 
 //Chamar o botão de salvar
