@@ -5,10 +5,11 @@ describe('', () => {
 
     it('Criar pessoas', () => {
         
-        AcessarPlataforma('alexandre.pereira', 102030)
+        cy.plataforma('alexandre.pereira', 102030)
         pessoaPessoa()
         CadastroPessoa('teste Alexandre auto', 46445706304, 'montese')
         salvar()
+        
     });
     
     it('Envia mensagem de teste', () => {
@@ -33,15 +34,6 @@ describe('', () => {
 
 
 
-
-
-
-//Acessar a plataforma
-function AcessarPlataforma(usuario,senha){
-    cy.get('#id_login').type(usuario)
-    cy.get('#id_senha').type(senha)
-    cy.contains('#submit_button', 'Entrar').click()
-    }
 
 
 //Acessar pessoa-pessoas
